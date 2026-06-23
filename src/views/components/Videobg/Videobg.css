@@ -1,0 +1,33 @@
+/* src/components/VideoBackground.css */
+.video-background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ou min-h-screen selon votre besoin */
+  overflow: hidden;
+  background-color: none; /* Fallback couleur si la vidéo charge lentement */
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Remplit le conteneur en recadrant si nécessaire */
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Place la vidéo derrière le contenu */
+}
+
+.video-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* Optionnel : ajouter un filtre sombre pour la lisibilité du texte */
+  background: rgba(0, 0, 0, 0.3); 
+}   

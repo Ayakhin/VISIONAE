@@ -1,0 +1,35 @@
+/* Style rapide pour la Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Espacement pour le contenu de tes pages */
+.main-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
