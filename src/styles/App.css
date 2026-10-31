@@ -25,6 +25,8 @@
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
   color: var(--color-ivory);
   font-size: 1.28rem;
   font-weight: 650;
@@ -32,8 +34,12 @@
   white-space: nowrap;
 }
 
-.wordmark span {
-  color: var(--color-champagne);
+.wordmark img {
+  display: block;
+  width: auto;
+  height: 150px;
+  max-width: 90px;
+  object-fit: contain;
 }
 
 .main-nav,
@@ -946,7 +952,11 @@
   }
 
   .wordmark {
-    font-size: 1.05rem;
+    height: 48px;
+  }
+
+  .wordmark img {
+    height: 48px;
   }
 
   .main-nav {
@@ -1421,7 +1431,6 @@
   color: #2b211c;
 }
 
-:root[data-theme='light'] .site-footer .wordmark span,
 :root[data-theme='light'] .site-footer .footer-nav a:hover,
 :root[data-theme='light'] .site-footer .footer-socials a:hover,
 :root[data-theme='light'] .site-footer .footer-bottom a:hover {

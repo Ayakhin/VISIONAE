@@ -239,7 +239,7 @@ function App() {
       <header className="site-header">
         <div className="header-inner">
           <a className="wordmark" href="#accueil" aria-label="Visionae, accueil">
-            visionae<span>.</span>
+            <img src="/logo.png" alt="Visionae" />
           </a>
           <nav className={`main-nav${isMenuOpen ? ' is-open' : ''}`} aria-label="Navigation principale">
             <a href="#apropos" onClick={() => setIsMenuOpen(false)}>À propos</a>
@@ -647,7 +647,9 @@ function App() {
 
       <footer className="site-footer">
         <div className="footer-main">
-          <a className="wordmark wordmark-light" href="#accueil">visionae<span>.</span></a>
+          <a className="wordmark wordmark-light" href="#accueil" aria-label="Visionae, accueil">
+            <img src="/logo.png" alt="Visionae" />
+          </a>
           <p>Un regard juste.<br />Des actions qui ont du sens.</p>
           <nav className="footer-nav" aria-label="Navigation de pied de page">
             <a href="#apropos">À propos</a>
