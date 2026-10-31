@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import './styles/App.css'
 
 const contactEmail = import.meta.env.VITE_CONTACT_EMAIL?.trim() ?? ''
@@ -10,10 +10,35 @@ const socialLinks = [
   { label: 'Instagram', href: import.meta.env.VITE_INSTAGRAM_URL },
 ].filter((link): link is { label: string; href: string } => Boolean(link.href?.trim()))
 
+type Theme = 'dark' | 'light'
+
+function readSavedTheme(): Theme {
+  try {
+    const savedTheme = window.localStorage.getItem('visionae-theme')
+    return savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark'
+  } catch (error) {
+    console.warn('Impossible de lire la préférence de thème enregistrée.', error)
+    return 'dark'
+  }
+}
+
 function ArrowIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
       <path d="M4 10h11M10 5l5 5-5 5" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  )
+}
+
+function ThemeIcon({ theme }: { theme: Theme }) {
+  return theme === 'dark' ? (
+    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+      <circle cx="10" cy="10" r="3.2" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M10 1.8v2M10 16.2v2M18.2 10h-2M3.8 10h-2m14-5.8-1.4 1.4m-8.8 8.8-1.4 1.4m11.6 0-1.4-1.4M5.2 5.2 3.8 3.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  ) : (
+    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+      <path d="M16.8 12.1A7.2 7.2 0 0 1 7.9 3.2a7.3 7.3 0 1 0 8.9 8.9Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -193,10 +218,21 @@ const resources = [
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<Theme>(readSavedTheme)
   const whatsappUrl = whatsappNumber
     ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Bonjour, je souhaite échanger avec Visionae.')}`
     : undefined
   const appointmentUrl = bookingUrl || '#contact'
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+
+    try {
+      window.localStorage.setItem('visionae-theme', theme)
+    } catch (error) {
+      console.warn('Impossible d’enregistrer la préférence de thème.', error)
+    }
+  }, [theme])
 
   return (
     <>
@@ -225,6 +261,15 @@ function App() {
           >
             <span />
             <span />
+          </button>
+          <button
+            aria-label={`Activer le thème ${theme === 'dark' ? 'clair' : 'sombre'}`}
+            className="theme-toggle"
+            onClick={() => setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')}
+            type="button"
+          >
+            <ThemeIcon theme={theme} />
+            <span>{theme === 'dark' ? 'Clair' : 'Sombre'}</span>
           </button>
           <a className="header-contact" href="#contact">
             Parlons de votre projet <ArrowIcon />

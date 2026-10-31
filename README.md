@@ -9,6 +9,11 @@ npm install
 npm run dev
 ```
 
+## Thème
+
+Le site démarre en thème sombre. Le bouton « Clair » dans l’en-tête permet de basculer vers le
+thème clair ; le choix est conservé dans le navigateur sur cet appareil.
+
 ## Coordonnées et réseaux
 
 Le formulaire prépare un e-mail via l’application de messagerie par défaut. Avant de le publier,
