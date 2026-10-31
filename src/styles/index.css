@@ -1,20 +1,18 @@
 :root {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #202722;
-  background: #f8f6f1;
+  font-family: "Manrope", "Montserrat", "Poppins", sans-serif;
+  color: #0d0d0d;
+  background: #f4efe8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-optical-sizing: auto;
 
-  --color-primary: #315d50;
-  --color-accent: #bb9a70;
-  --color-surface: #f8f6f1;
-  --color-text: #202722;
-  --color-muted: #737870;
-  --color-border: #dedbd1;
-  --font-display: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  --color-black: #0d0d0d;
+  --color-ivory: #f4efe8;
+  --color-champagne: #c9a46a;
+  --color-mocha: #5c4635;
+  --color-smoke: #2b211c;
+  --font-body: "Manrope", "Montserrat", "Poppins", sans-serif;
 }
 
 * {
@@ -24,21 +22,23 @@
 html {
   min-width: 320px;
   scroll-behavior: smooth;
+  scroll-padding-top: 82px;
 }
 
 body {
   min-width: 320px;
   margin: 0;
-  background: var(--color-surface);
-  color: var(--color-text);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ivory);
+  color: var(--color-black);
+  font-family: var(--font-body);
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -50,12 +50,12 @@ a {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-summary:focus-visible {
-  outline: 2px solid var(--color-accent);
+textarea:focus-visible {
+  outline: 2px solid var(--color-champagne);
   outline-offset: 4px;
 }
 
 ::selection {
-  background: #d6e0d7;
-  color: var(--color-text);
+  background: var(--color-champagne);
+  color: var(--color-black);
 }
